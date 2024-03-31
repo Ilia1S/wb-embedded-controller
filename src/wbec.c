@@ -17,6 +17,7 @@
 #include "mcu-pwr.h"
 #include "rcc.h"
 #include "console.h"
+#include "buzzer.h"
 
 #define LINUX_POWERON_REASON(m) \
     m(REASON_POWER_ON,        "Power supply on"        ) \
@@ -216,6 +217,10 @@ void wbec_init(void)
         }
         if (pwrkey_pressed()) {
             wbec_info.poweron_reason = REASON_POWER_KEY;
+            if (!buzzer_done() && is_buzzer_enabled()) {
+                buzzer_init();
+                buzzer_initial_buzz();
+            }
         } else {
             // Если кнопка не нажата (или нажата коротко и не прошла антидребезг) - засыпаем
             linux_cpu_pwr_seq_off_and_goto_standby(WBEC_PERIODIC_WAKEUP_NEXT_TIMEOUT_S);
