@@ -52,6 +52,13 @@
         /* 0x48 */  uint16_t v_a3; \
         /* 0x49 */  uint16_t v_a4; \
     ) \
+    /*     Addr     Name           RO/RW */ \
+    m(     0x60,   BUZZER,         RW, \
+        /* 0x61 */ uint16_t duration; \
+        /* 0x62 */ uint16_t period; \
+        /* 0x63 */ uint16_t duty_cycle; \
+        /* 0x64 */ uint16_t is_enabled : 1; \
+    ) \
     /*     Addr     Name            RO/RW */ \
     m(     0x80,    GPIO,           RW, \
         /* 0x80 */  uint16_t a1 : 1; \

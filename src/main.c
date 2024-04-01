@@ -17,6 +17,7 @@
 #include "rcc.h"
 #include "mcu-pwr.h"
 #include "test_subsystem.h"
+#include "buzzer.h"
 
 int main(void)
 {
@@ -26,7 +27,6 @@ int main(void)
     RCC->IOPENR |= RCC_IOPENR_GPIOCEN;
     RCC->IOPENR |= RCC_IOPENR_GPIODEN;
     system_led_init();
-
     // При включении начинаем всегда с low power run
     // Смотрим причину включения и решаем что делать
     system_led_enable();
@@ -76,6 +76,7 @@ int main(void)
         pwrkey_do_periodic_work();
         wdt_do_periodic_work();
         gpio_do_periodic_work();
+        buzzer_do_periodic_work();
 
         // Sybsystems
         rtc_alarm_do_periodic_work();

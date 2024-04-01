@@ -51,6 +51,10 @@
 #define EC_GPIO_LED                     GPIOC, 6
 #define EC_GPIO_LED_ACTIVE_HIGH
 
+// Зуммер для звуковой индикации включения по нажатию кнопки питания EC
+#define EC_GPIO_BUZZER                  GPIOC, 7
+#define TIM3_CH2                        1
+
 // Кнопка включения
 #define EC_GPIO_PWRKEY                  GPIOA, 0
 #define EC_GPIO_PWRKEY_ACTIVE_LOW
